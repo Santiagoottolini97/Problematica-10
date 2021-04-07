@@ -81,7 +81,7 @@ function validationRegister() {
   return false;
 }
 //I assign a function to the button btnSubmit
-btnSubmit.addEventListener("click",validationRegister)
+btnSubmit.addEventListener("blur",validationRegister)
 
 //Validation mail
 function isEmail(email) {
