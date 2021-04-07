@@ -4,6 +4,8 @@ var email = document.getElementById("email");
 var password = document.getElementById("password");
 var rPassword = document.getElementById("rPassword");
 var error = document.getElementById("error");
+//QUERY SELECTOR
+var btnSubmit = document.querySelector('.btnSend')
 //BY TAG NAME
 var labelRegister = document.getElementsByTagName("label");
 var inputRegister = document.getElementsByTagName("input");
@@ -78,6 +80,8 @@ function validationRegister() {
   error.innerHTML = messageError.join(", ");
   return false;
 }
+//I assign a function to the button btnSubmit
+btnSubmit.addEventListener("click",validationRegister)
 
 //Validation mail
 function isEmail(email) {
