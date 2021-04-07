@@ -19,6 +19,10 @@ function validationRegister() {
   if (namer.value === "" || namer.value === null) {
     //a new position of array was created
     messageError.push("Complete the name");
+  } else if (namer.value.length < 6) {
+    messageError.push("The name must contain 6 digits or more");
+  } else if (namer.value.indexOf(" ") <= 0) {
+    messageError.push("The name must contain one space blank");
   }
   //validation mail
   if (email.value == "" || email.value == null) {
@@ -31,6 +35,18 @@ function validationRegister() {
   //validation password
   if (password.value === "" || password.value === null) {
     messageError.push("Complete the password");
+  } else if (password.value.search(/[a-z]/) < 0) {
+    messageError.push(
+      "Your password must contain at least one lowercase letter."
+    );
+  } else if (password.value.search(/[A-Z]/) < 0) {
+    messageError.push(
+      "Your password must contain at least one uppercase letter."
+    );
+  } else if (password.value.search(/[0-9]/) < 0) {
+    messageError.push("Your password must contain at least one digit.");
+  } else if (password.value.length < 8) {
+    messageError.push("Your password must contain at least 8 digit.");
   }
   //validation password
   if (rPassword.value === "" || rPassword.value === null) {
@@ -68,4 +84,9 @@ function isEmail(email) {
   return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
     email
   );
+}
+function isEmpty(str) {
+  strRE = new RegExp();
+  strRE.compile("^[s ]*$", "gi");
+  return strRE.test(str.value);
 }

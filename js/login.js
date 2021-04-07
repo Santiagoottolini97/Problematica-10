@@ -26,7 +26,28 @@ function validationLogin() {
   //validation password
   if (password.value === "" || password.value === null) {
     messageError.push("Complete the password");
+  } 
+  else if (password.value.search(/[a-z]/) < 0) {
+    messageError.push(
+      "Your password must contain at least one lowercase letter."
+    );
   }
+  else if (password.value.search(/[A-Z]/) < 0) {
+    messageError.push(
+      "Your password must contain at least one uppercase letter."
+    );
+  }
+  else if (password.value.search(/[0-9]/) < 0) {
+    messageError.push(
+      "Your password must contain at least one digit."
+    );
+  }
+  else if (password.value.length < 8) {
+    messageError.push(
+      "Your password must contain at least 8 digit."
+    );
+  }
+
   //Validations tags of HTML
   if (formLogin.length === 0) {
     messageError.push("Not exist a form, please create one");
