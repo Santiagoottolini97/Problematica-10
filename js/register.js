@@ -7,10 +7,13 @@ var errorEmail = document.getElementById("errorEmail");
 var errorPassword = document.getElementById("errorPassword");
 var errorPasswordR = document.getElementById("errorPasswordR");
 var errorName = document.getElementById("errorName");
+var containerData = document.getElementById("containerData");
+var titleData = document.getElementById("titleData");
 
 //QUERY SELECTOR
 var btnSubmit = document.querySelector(".btnSend");
 
+var saveData = [];
 function handlerOnBlurName() {
   if (namer.value === "" || namer.value === null) {
     errorName.style.color = "red";
@@ -31,6 +34,7 @@ function handlerOnBlurName() {
   namer.addEventListener("focus", () => {
     errorName.innerHTML = "";
   });
+  saveData.push(namer.value);
 }
 
 function handlerOnBlurEmail() {
@@ -49,6 +53,7 @@ function handlerOnBlurEmail() {
   email.addEventListener("focus", () => {
     errorEmail.innerHTML = "";
   });
+  saveData.push(email.value);
 }
 
 function handlerOnBlurPassword() {
@@ -81,6 +86,7 @@ function handlerOnBlurPassword() {
   password.addEventListener("focus", () => {
     errorPassword.innerHTML = "";
   });
+  saveData.push(password.value);
 }
 function handlerOnBlurRepeatPassword() {
   if (rPassword.value === "" || rPassword.value === null) {
@@ -98,6 +104,15 @@ function handlerOnBlurRepeatPassword() {
   rPassword.addEventListener("focus", () => {
     errorPasswordR.innerHTML = "";
   });
+  saveData.push(rPassword.value);
+  saveData.splice(4, 5);
+}
+
+function dataCapture() {
+  titleData.innerHTML = "DATOS";
+  containerData.style.color = "blue";
+  containerData.innerHTML = saveData.join("<br>");
+  console.log(saveData);
 }
 
 namer.addEventListener("blur", handlerOnBlurName);
@@ -109,6 +124,7 @@ btnSubmit.addEventListener("click", () => {
   handlerOnBlurEmail();
   handlerOnBlurPassword();
   handlerOnBlurRepeatPassword();
+  dataCapture();
 });
 
 function isEmail(email) {

@@ -102,3 +102,13 @@ body {
 display: flex;
 justify-content:center;
 }
+#titleData{
+  display: flex;
+  justify-content:center;
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  background: black;
+  font-size:18px;
+  color:white;
+}

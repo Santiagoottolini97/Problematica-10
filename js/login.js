@@ -3,9 +3,11 @@ var password = document.getElementById("password");
 var errorEmail = document.getElementById("errorEmail");
 var errorPassword = document.getElementById("errorPassword");
 var containerData = document.getElementById("containerData");
+var titleData = document.getElementById("titleData");
 
 var btnSubmit = document.querySelector(".btnSend");
 
+var saveData = [];
 function handlerOnBlurEmail() {
   if (email.value === "" || email.value === null) {
     errorEmail.style.color = "red";
@@ -22,6 +24,7 @@ function handlerOnBlurEmail() {
   email.addEventListener("focus", () => {
     errorEmail.innerHTML = "";
   });
+  saveData.push(email.value);
 }
 
 function handlerOnBlurPassword() {
@@ -49,6 +52,14 @@ function handlerOnBlurPassword() {
   password.addEventListener("focus", () => {
     errorPassword.innerHTML = "";
   });
+  saveData.push(password.value);
+  saveData.splice(2, 3);
+}
+
+function dataCapture() {
+  titleData.innerHTML="DATOS"
+  containerData.style.color = "blue";
+  containerData.innerHTML = saveData.join("<br>");
 }
 
 email.addEventListener("blur", handlerOnBlurEmail);
@@ -57,6 +68,7 @@ password.addEventListener("blur", handlerOnBlurPassword);
 btnSubmit.addEventListener("click", () => {
   handlerOnBlurEmail();
   handlerOnBlurPassword();
+  dataCapture();
 });
 
 function isEmail(email) {
