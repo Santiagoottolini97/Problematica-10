@@ -26,8 +26,11 @@ function handlerOnBlurName() {
     errorName.innerHTML = "The name must cotaint space blank";
   } else {
     errorName.innerHTML = "";
-    namer.style.borderColor = "#c0c0c0";
+    namer.style.borderColor = "green";
   }
+  namer.addEventListener("focus", () => {
+    errorName.innerHTML = "";
+  });
 }
 
 function handlerOnBlurEmail() {
@@ -41,8 +44,11 @@ function handlerOnBlurEmail() {
     errorEmail.innerHTML = "The email is invalid";
   } else {
     errorEmail.innerHTML = "";
-    email.style.borderColor = "#c0c0c0";
+    email.style.borderColor = "green";
   }
+  email.addEventListener("focus", () => {
+    errorEmail.innerHTML = "";
+  });
 }
 
 function handlerOnBlurPassword() {
@@ -70,8 +76,11 @@ function handlerOnBlurPassword() {
     errorPassword.innerHTML = "Your password must contain at least 8 digit.";
   } else {
     errorPassword.innerHTML = "";
-    password.style.borderColor = "#c0c0c0";
+    password.style.borderColor = "green";
   }
+  password.addEventListener("focus", () => {
+    errorPassword.innerHTML = "";
+  });
 }
 function handlerOnBlurRepeatPassword() {
   if (rPassword.value === "" || rPassword.value === null) {
@@ -84,8 +93,11 @@ function handlerOnBlurRepeatPassword() {
     errorPasswordR.innerHTML = "Must be the same password";
   } else {
     errorPasswordR.innerHTML = "";
-    rPassword.style.borderColor = "#c0c0c0";
+    rPassword.style.borderColor = "green";
   }
+  rPassword.addEventListener("focus", () => {
+    errorPasswordR.innerHTML = "";
+  });
 }
 
 namer.addEventListener("blur", handlerOnBlurName);
