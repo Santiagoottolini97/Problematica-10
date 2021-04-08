@@ -75,13 +75,17 @@ function validationRegister() {
   fields are created because it does not have an error message that shows 
   the message that it is correct*/
   if (messageError.length == 0) {
-    messageError.push("Every validation has passed");
+    messageError.push("");
   }
   error.innerHTML = messageError.join(", ");
   return false;
 }
+function onFocusValidation() {
+
+}
 //I assign a function to the button btnSubmit
 btnSubmit.addEventListener("blur",validationRegister)
+btnSubmit.addEventListener("focus",onFocusValidation)
 
 //Validation mail
 function isEmail(email) {
