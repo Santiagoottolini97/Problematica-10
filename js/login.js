@@ -57,9 +57,21 @@ function handlerOnBlurPassword() {
 }
 
 function dataCapture() {
-  titleData.innerHTML="DATOS"
+  titleData.innerHTML = "DATOS";
   containerData.style.color = "blue";
   containerData.innerHTML = saveData.join("<br>");
+}
+
+async function getUserEmail() {
+  try {
+    fetch(`https://jsonplaceholder.typicode.com/users/${email.value}`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then((data) => console.log(data));
+  } catch (error) {
+    res.json({ message: error });
+  }
 }
 
 email.addEventListener("blur", handlerOnBlurEmail);
@@ -69,10 +81,11 @@ btnSubmit.addEventListener("click", () => {
   handlerOnBlurEmail();
   handlerOnBlurPassword();
   dataCapture();
+  getUserEmail();
 });
 
+//VALIDATIONS WITH REGULAR EXPRESIONS
 function isEmail(email) {
-  //test return a boolean
   return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
     email
   );

@@ -115,6 +115,18 @@ function dataCapture() {
   console.log(saveData);
 }
 
+async function getUserEmail() {
+  try {
+    fetch(`https://jsonplaceholder.typicode.com/users/${email.value}`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then((data) => console.log(data));
+  } catch (error) {
+    res.json({ message: error });
+  }
+}
+
 namer.addEventListener("blur", handlerOnBlurName);
 email.addEventListener("blur", handlerOnBlurEmail);
 password.addEventListener("blur", handlerOnBlurPassword);
@@ -125,6 +137,7 @@ btnSubmit.addEventListener("click", () => {
   handlerOnBlurPassword();
   handlerOnBlurRepeatPassword();
   dataCapture();
+  getUserEmail();
 });
 
 function isEmail(email) {
