@@ -3,98 +3,112 @@ var namer = document.getElementById("name");
 var email = document.getElementById("email");
 var password = document.getElementById("password");
 var rPassword = document.getElementById("rPassword");
-var error = document.getElementById("error");
+var errorEmail = document.getElementById("errorEmail");
+var errorPassword = document.getElementById("errorPassword");
+var errorPasswordR = document.getElementById("errorPasswordR");
+var errorName = document.getElementById("errorName");
+
 //QUERY SELECTOR
-var btnSubmit = document.querySelector('.btnSend')
-//BY TAG NAME
-var labelRegister = document.getElementsByTagName("label");
-var inputRegister = document.getElementsByTagName("input");
-var buttonRegister = document.getElementsByTagName("button");
-var formRegister = document.getElementsByTagName("form");
+var btnSubmit = document.querySelector(".btnSend");
 
-error.style.color = "red";
-
-function validationRegister() {
-  //Create an empty array
-  var messageError = [];
-  //validation name
+function handlerOnBlurName() {
   if (namer.value === "" || namer.value === null) {
-    //a new position of array was created
-    messageError.push("Complete the name");
-  } else if (namer.value.length < 6) {
-    messageError.push("The name must contain 6 digits or more");
+    errorName.style.color = "red";
+    namer.style.borderColor = "red";
+    errorName.innerHTML = "Complete the name please";
+  } else if (password.value >= 6) {
+    errorName.style.color = "red";
+    namer.style.borderColor = "red";
+    errorName.innerHTML = "Your password must contain at least 6 digit.";
   } else if (namer.value.indexOf(" ") <= 0) {
-    messageError.push("The name must contain one space blank");
+    errorName.style.color = "red";
+    namer.style.borderColor = "red";
+    errorName.innerHTML = "The name must cotaint space blank";
+  } else {
+    errorName.innerHTML = "";
+    namer.style.borderColor = "#c0c0c0";
   }
-  //validation mail
-  if (email.value == "" || email.value == null) {
-    messageError.push("Complete the email");
+}
+
+function handlerOnBlurEmail() {
+  if (email.value === "" || email.value === null) {
+    errorEmail.style.color = "red";
+    email.style.borderColor = "red";
+    errorEmail.innerHTML = "Complete with your email";
+  } else if (!isEmail(email.value)) {
+    errorEmail.style.color = "red";
+    email.style.borderColor = "red";
+    errorEmail.innerHTML = "The email is invalid";
+  } else {
+    errorEmail.innerHTML = "";
+    email.style.borderColor = "#c0c0c0";
   }
-  //if the mail not contain the necesary simbols, return a message of error
-  else if (!isEmail(email.value)) {
-    messageError.push("The email is not valid");
-  }
-  //validation password
+}
+
+function handlerOnBlurPassword() {
   if (password.value === "" || password.value === null) {
-    messageError.push("Complete the password");
-  } else if (password.value.search(/[a-z]/) < 0) {
-    messageError.push(
-      "Your password must contain at least one lowercase letter."
-    );
-  } else if (password.value.search(/[A-Z]/) < 0) {
-    messageError.push(
-      "Your password must contain at least one uppercase letter."
-    );
-  } else if (password.value.search(/[0-9]/) < 0) {
-    messageError.push("Your password must contain at least one digit.");
+    errorPassword.style.color = "red";
+    password.style.borderColor = "red";
+    errorPassword.innerHTML = "Complete the password please";
+  } else if (!upperCasePassword(password.value)) {
+    errorPassword.style.color = "red";
+    password.style.borderColor = "red";
+    errorPassword.innerHTML =
+      "Your password must contain at least one uppercase letter.";
+  } else if (!lowerCasePassword(password.value)) {
+    errorPassword.style.color = "red";
+    password.style.borderColor = "red";
+    errorPassword.innerHTML =
+      "Your password must contain at least one lowercase letter.";
+  } else if (!numberPassword(password.value)) {
+    errorPassword.style.color = "red";
+    password.style.borderColor = "red";
+    errorPassword.innerHTML = "Your password must contain at least one number.";
   } else if (password.value.length < 8) {
-    messageError.push("Your password must contain at least 8 digit.");
+    errorPassword.style.color = "red";
+    password.style.borderColor = "red";
+    errorPassword.innerHTML = "Your password must contain at least 8 digit.";
+  } else {
+    errorPassword.innerHTML = "";
+    password.style.borderColor = "#c0c0c0";
   }
-  //validation password
+}
+function handlerOnBlurRepeatPassword() {
   if (rPassword.value === "" || rPassword.value === null) {
-    messageError.push("Repeat your password please");
+    errorPasswordR.style.color = "red";
+    rPassword.style.borderColor = "red";
+    errorPasswordR.innerHTML = "The password is invalid";
+  } else if (password.value !== rPassword.value) {
+    errorPasswordR.style.color = "red";
+    rPassword.style.borderColor = "red";
+    errorPasswordR.innerHTML = "Must be the same password";
+  } else {
+    errorPasswordR.innerHTML = "";
+    rPassword.style.borderColor = "#c0c0c0";
   }
-  //validation: the password has to be exactly the same
-  if (password.value !== rPassword.value) {
-    messageError.push("Write the same password");
-  }
-  //Validations tags of HTML
-  if (formRegister.length === 0) {
-    messageError.push("Not exist a form, please create one");
-  }
-  if (labelRegister.length > 4) {
-    messageError.push("The label not exist, please create one");
-  }
-  if (inputRegister.length > 4) {
-    messageError.push("The input not exist, please create one");
-  }
-  if (buttonRegister.length > 1) {
-    messageError.push("The button not exist, please create one");
-  }
-  /*If the arrangement does not have any position, that is, all the 
-  fields are created because it does not have an error message that shows 
-  the message that it is correct*/
-  if (messageError.length == 0) {
-    messageError.push("");
-  }
-  error.innerHTML = messageError.join(", ");
-  return false;
 }
-function onFocusValidation() {
 
-}
-//I assign a function to the button btnSubmit
-btnSubmit.addEventListener("blur",validationRegister)
-btnSubmit.addEventListener("focus",onFocusValidation)
+email.addEventListener("blur", handlerOnBlurEmail);
+password.addEventListener("blur", handlerOnBlurPassword);
+btnSubmit.addEventListener("click", () => {
+  handlerOnBlurName();
+  handlerOnBlurEmail();
+  handlerOnBlurPassword();
+  handlerOnBlurRepeatPassword();
+});
 
-//Validation mail
 function isEmail(email) {
+  //test return a boolean
   return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
     email
   );
 }
-function isEmpty(str) {
-  strRE = new RegExp();
-  strRE.compile("^[s ]*$", "gi");
-  return strRE.test(str.value);
+function upperCasePassword(password) {
+  return /[A-Z]/.test(password);
+}
+function lowerCasePassword(password) {
+  return /[a-z]/.test(password);
+}
+function numberPassword(password) {
+  return /[0-9]/.test(password);
 }
