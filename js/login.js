@@ -7,7 +7,9 @@ var titleData = document.getElementById("titleData");
 
 var btnSubmit = document.querySelector(".btnSend");
 
+//Empty array when the data will be capture
 var saveData = [];
+
 function handlerOnBlurEmail() {
   if (email.value === "" || email.value === null) {
     errorEmail.style.color = "red";
@@ -24,6 +26,7 @@ function handlerOnBlurEmail() {
   email.addEventListener("focus", () => {
     errorEmail.innerHTML = "";
   });
+  //Save in an array the email
   saveData.push(email.value);
 }
 
@@ -52,6 +55,7 @@ function handlerOnBlurPassword() {
   password.addEventListener("focus", () => {
     errorPassword.innerHTML = "";
   });
+  //Save in an array the password
   saveData.push(password.value);
   saveData.splice(2, 3);
 }
@@ -62,6 +66,8 @@ function dataCapture() {
   containerData.innerHTML = saveData.join("<br>");
 }
 
+//Fetch
+//Capture de email value, the capture the response and show in the console
 async function getUserEmail() {
   try {
     fetch(`https://jsonplaceholder.typicode.com/users/${email.value}`)
@@ -74,9 +80,9 @@ async function getUserEmail() {
   }
 }
 
+//Events blur and click
 email.addEventListener("blur", handlerOnBlurEmail);
 password.addEventListener("blur", handlerOnBlurPassword);
-
 btnSubmit.addEventListener("click", () => {
   handlerOnBlurEmail();
   handlerOnBlurPassword();
@@ -84,18 +90,21 @@ btnSubmit.addEventListener("click", () => {
   getUserEmail();
 });
 
-//VALIDATIONS WITH REGULAR EXPRESIONS
+//Validation mail
 function isEmail(email) {
   return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
     email
   );
 }
+//Validation upper case
 function upperCasePassword(password) {
   return /[A-Z]/.test(password);
 }
+//Validation lower case
 function lowerCasePassword(password) {
   return /[a-z]/.test(password);
 }
+//Validation number
 function numberPassword(password) {
   return /[0-9]/.test(password);
 }

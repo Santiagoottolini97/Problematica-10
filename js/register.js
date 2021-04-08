@@ -13,7 +13,9 @@ var titleData = document.getElementById("titleData");
 //QUERY SELECTOR
 var btnSubmit = document.querySelector(".btnSend");
 
+//Empty array when the data will be capture
 var saveData = [];
+
 function handlerOnBlurName() {
   if (namer.value === "" || namer.value === null) {
     errorName.style.color = "red";
@@ -31,9 +33,12 @@ function handlerOnBlurName() {
     errorName.innerHTML = "";
     namer.style.borderColor = "green";
   }
+  //If the user focuses, the validation is canceled
   namer.addEventListener("focus", () => {
     errorName.innerHTML = "";
   });
+
+  //Save in an array the name
   saveData.push(namer.value);
 }
 
@@ -53,6 +58,7 @@ function handlerOnBlurEmail() {
   email.addEventListener("focus", () => {
     errorEmail.innerHTML = "";
   });
+  //Save in an array the email
   saveData.push(email.value);
 }
 
@@ -86,6 +92,7 @@ function handlerOnBlurPassword() {
   password.addEventListener("focus", () => {
     errorPassword.innerHTML = "";
   });
+  //Save in an array the password
   saveData.push(password.value);
 }
 function handlerOnBlurRepeatPassword() {
@@ -104,10 +111,12 @@ function handlerOnBlurRepeatPassword() {
   rPassword.addEventListener("focus", () => {
     errorPasswordR.innerHTML = "";
   });
+  //Save in an array the repeat password
   saveData.push(rPassword.value);
   saveData.splice(4, 5);
 }
 
+//Function to show the data
 function dataCapture() {
   titleData.innerHTML = "DATOS";
   containerData.style.color = "blue";
@@ -115,6 +124,8 @@ function dataCapture() {
   console.log(saveData);
 }
 
+//Fetch
+//Capture de email value, the capture the response and show in the console
 async function getUserEmail() {
   try {
     fetch(`https://jsonplaceholder.typicode.com/users/${email.value}`)
@@ -127,6 +138,7 @@ async function getUserEmail() {
   }
 }
 
+//Events blur and click
 namer.addEventListener("blur", handlerOnBlurName);
 email.addEventListener("blur", handlerOnBlurEmail);
 password.addEventListener("blur", handlerOnBlurPassword);
@@ -140,18 +152,21 @@ btnSubmit.addEventListener("click", () => {
   getUserEmail();
 });
 
+//Validation email
 function isEmail(email) {
-  //test return a boolean
   return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
     email
   );
 }
+//Validation upper case
 function upperCasePassword(password) {
   return /[A-Z]/.test(password);
 }
+//Validation lower case
 function lowerCasePassword(password) {
   return /[a-z]/.test(password);
 }
+//Validation number
 function numberPassword(password) {
   return /[0-9]/.test(password);
 }
