@@ -2,6 +2,7 @@ var email = document.getElementById("email");
 var password = document.getElementById("password");
 var errorEmail = document.getElementById("errorEmail");
 var errorPassword = document.getElementById("errorPassword");
+var containerData = document.getElementById("containerData");
 
 var btnSubmit = document.querySelector(".btnSend");
 
@@ -16,7 +17,11 @@ function handlerOnBlurEmail() {
     errorEmail.innerHTML = "The email is invalid";
   } else {
     errorEmail.innerHTML = "";
+    email.style.borderColor = "green";
   }
+  email.addEventListener("focus", () => {
+    errorEmail.innerHTML = "";
+  });
 }
 
 function handlerOnBlurPassword() {
@@ -39,11 +44,16 @@ function handlerOnBlurPassword() {
     errorPassword.innerHTML = "Your password must contain at least 8 digit.";
   } else {
     errorPassword.innerHTML = "";
+    password.style.borderColor = "green";
   }
+  password.addEventListener("focus", () => {
+    errorPassword.innerHTML = "";
+  });
 }
 
 email.addEventListener("blur", handlerOnBlurEmail);
 password.addEventListener("blur", handlerOnBlurPassword);
+
 btnSubmit.addEventListener("click", () => {
   handlerOnBlurEmail();
   handlerOnBlurPassword();

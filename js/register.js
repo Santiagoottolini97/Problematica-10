@@ -88,8 +88,10 @@ function handlerOnBlurRepeatPassword() {
   }
 }
 
+namer.addEventListener("blur", handlerOnBlurName);
 email.addEventListener("blur", handlerOnBlurEmail);
 password.addEventListener("blur", handlerOnBlurPassword);
+rPassword.addEventListener("blur", handlerOnBlurRepeatPassword);
 btnSubmit.addEventListener("click", () => {
   handlerOnBlurName();
   handlerOnBlurEmail();
