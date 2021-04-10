@@ -8,7 +8,6 @@ var titleData = document.getElementById("titleData");
 var btnSubmit = document.querySelector(".btnSend");
 
 //Empty array when the data will be capture
-var saveData = [];
 
 function handlerOnBlurEmail() {
   if (email.value === "" || email.value === null) {
@@ -22,12 +21,11 @@ function handlerOnBlurEmail() {
   } else {
     errorEmail.innerHTML = "";
     email.style.borderColor = "green";
+    getUserEmail();
   }
   email.addEventListener("focus", () => {
     errorEmail.innerHTML = "";
   });
-  //Save in an array the email
-  saveData.push(email.value);
 }
 
 function handlerOnBlurPassword() {
@@ -55,15 +53,12 @@ function handlerOnBlurPassword() {
   password.addEventListener("focus", () => {
     errorPassword.innerHTML = "";
   });
-  //Save in an array the password
-  saveData.push(password.value);
-  saveData.splice(2, 3);
 }
 
 function dataCapture() {
   titleData.innerHTML = "DATOS";
   containerData.style.color = "blue";
-  containerData.innerHTML = saveData.join("<br>");
+  containerData.innerHTML = `Email: ${email.value}<br>Password: ${password.value}<br>`;
 }
 
 //Fetch
@@ -87,7 +82,6 @@ btnSubmit.addEventListener("click", () => {
   handlerOnBlurEmail();
   handlerOnBlurPassword();
   dataCapture();
-  getUserEmail();
 });
 
 //Validation mail

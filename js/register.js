@@ -13,9 +13,6 @@ var titleData = document.getElementById("titleData");
 //QUERY SELECTOR
 var btnSubmit = document.querySelector(".btnSend");
 
-//Empty array when the data will be capture
-var saveData = [];
-
 function handlerOnBlurName() {
   if (namer.value === "" || namer.value === null) {
     errorName.style.color = "red";
@@ -36,10 +33,8 @@ function handlerOnBlurName() {
   //If the user focuses, the validation is canceled
   namer.addEventListener("focus", () => {
     errorName.innerHTML = "";
+    namer.style.borderColor = "green";
   });
-
-  //Save in an array the name
-  saveData.push(namer.value);
 }
 
 function handlerOnBlurEmail() {
@@ -54,12 +49,12 @@ function handlerOnBlurEmail() {
   } else {
     errorEmail.innerHTML = "";
     email.style.borderColor = "green";
+    getUserEmail();
   }
   email.addEventListener("focus", () => {
     errorEmail.innerHTML = "";
+    email.style.borderColor = "green";
   });
-  //Save in an array the email
-  saveData.push(email.value);
 }
 
 function handlerOnBlurPassword() {
@@ -91,9 +86,8 @@ function handlerOnBlurPassword() {
   }
   password.addEventListener("focus", () => {
     errorPassword.innerHTML = "";
+    password.style.borderColor = "green";
   });
-  //Save in an array the password
-  saveData.push(password.value);
 }
 function handlerOnBlurRepeatPassword() {
   if (rPassword.value === "" || rPassword.value === null) {
@@ -104,24 +98,40 @@ function handlerOnBlurRepeatPassword() {
     errorPasswordR.style.color = "red";
     rPassword.style.borderColor = "red";
     errorPasswordR.innerHTML = "Must be the same password";
+  } else if (!upperCasePassword(rPassword.value)) {
+    errorPasswordR.style.color = "red";
+    rPassword.style.borderColor = "red";
+    errorPasswordR.innerHTML =
+      "Your password must contain at least one uppercase letter.";
+  } else if (!lowerCasePassword(rPassword.value)) {
+    errorPasswordR.style.color = "red";
+    rPassword.style.borderColor = "red";
+    errorPasswordR.innerHTML =
+      "Your password must contain at least one lowercase letter.";
+  } else if (!numberPassword(rPassword.value)) {
+    errorPasswordR.style.color = "red";
+    rPassword.style.borderColor = "red";
+    errorPasswordR.innerHTML =
+      "Your password must contain at least one number.";
+  } else if (rPassword.value.length < 8) {
+    errorPasswordR.style.color = "red";
+    rPassword.style.borderColor = "red";
+    errorPasswordR.innerHTML = "Your password must contain at least 8 digit.";
   } else {
     errorPasswordR.innerHTML = "";
     rPassword.style.borderColor = "green";
   }
   rPassword.addEventListener("focus", () => {
     errorPasswordR.innerHTML = "";
+    rPassword.style.borderColor = "green";
   });
-  //Save in an array the repeat password
-  saveData.push(rPassword.value);
-  saveData.splice(4, 5);
 }
 
 //Function to show the data
 function dataCapture() {
   titleData.innerHTML = "DATOS";
   containerData.style.color = "blue";
-  containerData.innerHTML = saveData.join("<br>");
-  console.log(saveData);
+  containerData.innerHTML = `Nombre: ${namer.value}<br>Email: ${email.value}<br>Password: ${password.value}<br>Repeat Passord: ${rPassword.value}<br>`;
 }
 
 //Fetch
@@ -149,7 +159,6 @@ btnSubmit.addEventListener("click", () => {
   handlerOnBlurPassword();
   handlerOnBlurRepeatPassword();
   dataCapture();
-  getUserEmail();
 });
 
 //Validation email
