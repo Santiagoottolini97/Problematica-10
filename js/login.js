@@ -56,7 +56,7 @@ function handlerOnBlurPassword() {
 }
 
 function dataCapture() {
-  titleData.innerHTML = "DATOS";
+  titleData.innerHTML = "USER INFO";
   containerData.style.color = "blue";
   containerData.innerHTML = `Email: ${email.value}<br>Password: ${password.value}<br>`;
 }

@@ -129,9 +129,9 @@ function handlerOnBlurRepeatPassword() {
 
 //Function to show the data
 function dataCapture() {
-  titleData.innerHTML = "DATOS";
+  titleData.innerHTML = "USER INFO";
   containerData.style.color = "blue";
-  containerData.innerHTML = `Nombre: ${namer.value}<br>Email: ${email.value}<br>Password: ${password.value}<br>Repeat Passord: ${rPassword.value}<br>`;
+  containerData.innerHTML = `Name: ${namer.value}<br>Email: ${email.value}<br>Password: ${password.value}<br>Repeat Passord: ${rPassword.value}<br>`;
 }
 
 //Fetch
