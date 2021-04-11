@@ -65,13 +65,15 @@ function dataCapture() {
 //Capture de email value, the capture the response and show in the console
 async function getUserEmail() {
   try {
-    fetch(`https://jsonplaceholder.typicode.com/users/${email.value}`)
-      .then(function (response) {
-        return response.json();
-      })
-      .then((data) => console.log(data));
-  } catch (error) {
-    res.json({ message: error });
+    const data = await fetch(
+      `https://jsonplaceholder.typicode.com/users?email=${email.value}`,
+      {
+        method: "GET",
+      }
+    );
+    console.log("Get data successfully", data);
+  } catch (err) {
+    console.error(`Error: ${err}`);
   }
 }
 
