@@ -11,7 +11,7 @@ body {
   background-size: cover;
   font-family: sans-serif;
 }
-.container {
+.containerRegister, .containerLogin {
   position: relative;
   width: 450px;
   height: auto;
@@ -19,6 +19,9 @@ body {
   border-radius: 5px;
   background: #dedede;
   box-shadow: 9px 9px 6px 9px rgb(61, 60, 60);
+}
+.containerRegister{
+  margin-bottom: 50px;
 }
 .containerEmail {
   margin-top: 30px;
