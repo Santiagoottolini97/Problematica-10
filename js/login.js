@@ -5,9 +5,8 @@ var errorPassword = document.getElementById('errorPassword');
 var containerData = document.getElementById('containerData');
 var titleData = document.getElementById('titleData');
 
+//QUERY SELECTOR
 var btnSubmit = document.querySelector('.btnSend');
-
-//Empty array when the data will be capture
 
 function handlerOnBlurEmail() {
     if (email.value === '' || email.value === null) {
