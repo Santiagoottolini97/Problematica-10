@@ -1,5 +1,6 @@
 # PROBLEMATICA 10
-
+![](assets/imgLogin.png)
+![](assets/imgRegister.png)
 Validacion de registro y login
 
 ## Pre-requisitos 📋
