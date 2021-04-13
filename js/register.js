@@ -10,6 +10,12 @@ var errorName = document.getElementById('errorName');
 var containerData = document.getElementById('containerData');
 var titleData = document.getElementById('titleData');
 
+//BY TAG NAME
+var labelLogin = document.getElementsByTagName('label');
+var inputLogin = document.getElementsByTagName('input');
+var buttonLogin = document.getElementsByTagName('button');
+var formLogin = document.getElementsByTagName('form');
+
 //QUERY SELECTOR
 var btnSubmit = document.querySelector('.btnSend');
 
@@ -121,6 +127,23 @@ function handlerOnBlurRepeatPassword() {
         rPassword.style.borderColor = 'green';
     });
 }
+
+//DOM Validations
+function handlerOnBlurDOM() {
+    if (formLogin.length === 0) {
+        alert('Form DOM validation');
+    }
+    if (labelLogin.length !== 4) {
+        alert('Label DOM validation');
+    }
+    if (inputLogin.length !== 4) {
+        alert('Input DOM validation');
+    }
+    if (buttonLogin.length !== 1) {
+        alert('Button DOM validation');
+    }
+}
+handlerOnBlurDOM();
 
 //Function to show the data
 function dataCapture() {

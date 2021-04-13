@@ -5,6 +5,12 @@ var errorPassword = document.getElementById('errorPassword');
 var containerData = document.getElementById('containerData');
 var titleData = document.getElementById('titleData');
 
+//BY TAG NAME
+var labelLogin = document.getElementsByTagName('label');
+var inputLogin = document.getElementsByTagName('input');
+var buttonLogin = document.getElementsByTagName('button');
+var formLogin = document.getElementsByTagName('form');
+
 //QUERY SELECTOR
 var btnSubmit = document.querySelector('.btnSend');
 
@@ -51,6 +57,23 @@ function handlerOnBlurPassword() {
         errorPassword.innerHTML = '';
     });
 }
+
+//DOM Validations
+function handlerOnBlurDOM() {
+    if (formLogin.length === 0) {
+        alert('Form DOM validation');
+    }
+    if (labelLogin.length !== 2) {
+        alert('Label DOM validation');
+    }
+    if (inputLogin.length !== 2) {
+        alert('Input DOM validation');
+    }
+    if (buttonLogin.length !== 1) {
+        alert('Button DOM validation');
+    }
+}
+handlerOnBlurDOM();
 
 function dataCapture() {
     titleData.innerHTML = 'USER INFO';
