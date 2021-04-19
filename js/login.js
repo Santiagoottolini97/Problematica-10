@@ -89,7 +89,7 @@ function handleLogin() {
         emailr: email.value,
         password: password.value,
     };
-    fetch('http://localhost:4000/putUser', {
+    fetch('http://localhost:4000/loginUser', {
         method: 'PUT',
         body: JSON.stringify(newUser),
         headers: {

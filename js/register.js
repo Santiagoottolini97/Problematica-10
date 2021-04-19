@@ -158,7 +158,7 @@ function handleRegister() {
         password: password.value,
         passwordR: rPassword.value,
     };
-    fetch('http://localhost:4000/postUser', {
+    fetch('http://localhost:4000/registerUser', {
         method: 'POST',
         body: JSON.stringify(newUser),
         headers: {
