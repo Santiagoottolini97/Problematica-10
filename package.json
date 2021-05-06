@@ -1,0 +1,30 @@
+{
+  "name": "problematica-10-frontend",
+  "version": "1.0.0",
+  "description": "![](assets/imgLogin.png)\r ![](assets/imgRegister.png)\r Validacion de registro y login",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Santiagoottolini97/Problematica-10-FrontEnd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Santiagoottolini97/Problematica-10-FrontEnd/issues"
+  },
+  "homepage": "https://github.com/Santiagoottolini97/Problematica-10-FrontEnd#readme",
+  "dependencies": {
+    "@wdio/cli": "^7.5.3",
+    "@wdio/sync": "^7.5.3"
+  },
+  "devDependencies": {
+    "@wdio/local-runner": "^7.5.5",
+    "@wdio/mocha-framework": "^7.5.3",
+    "@wdio/spec-reporter": "^7.5.3",
+    "chromedriver": "^90.0.0",
+    "wdio-chromedriver-service": "^7.0.0"
+  }
+}
