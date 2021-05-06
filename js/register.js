@@ -25,10 +25,10 @@ function handlerOnBlurName() {
         namer.style.borderColor = 'red';
         errorName.innerHTML = 'Complete the name please';
         return false;
-    } else if (password.value >= 6) {
+    } else if (namer.value >= 6) {
         errorName.style.color = 'red';
         namer.style.borderColor = 'red';
-        errorName.innerHTML = 'Your password must contain at least 6 digit.';
+        errorName.innerHTML = 'Your name must contain at least 6 digit.';
         return false;
     } else if (namer.value.indexOf(' ') <= 0) {
         errorName.style.color = 'red';
@@ -93,7 +93,7 @@ function handlerOnBlurRepeatPassword() {
     if (rPassword.value === '' || rPassword.value === null) {
         errorPasswordR.style.color = 'red';
         rPassword.style.borderColor = 'red';
-        errorPasswordR.innerHTML = 'The password is invalid';
+        errorPasswordR.innerHTML = 'Complete the password please';
         return false;
     } else if (password.value !== rPassword.value) {
         errorPasswordR.style.color = 'red';

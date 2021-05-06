@@ -1,9 +1,17 @@
-# PROBLEMATICA 10
+# PROBLEMATICA 10 Y 14
 ![](assets/imgLogin.png)
 ![](assets/imgRegister.png)
 Validacion de registro y login
 
 ## Pre-requisitos 📋
+
+#### Install WDIO:
+
+* npm install
+
+#### Run rest WDIO:
+
+* npx wdio run ./wdio.conf.js
 
 #### Login form:
 
