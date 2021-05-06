@@ -7,7 +7,7 @@ describe('My Register application', () => {
     const urlLogin = 'file:///C:/Users/Santiago/Desktop/Problematica-10-FrontEnd/public/login.html';
 
     function browserPause() {
-        /* browser.pause(1000); */
+        browser.pause(1000); 
     }
     describe('TEST REGISTER NAME', () => {
         it('Valid credentials', () => {

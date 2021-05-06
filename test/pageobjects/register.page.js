@@ -1,68 +1,124 @@
 class RegisterPage {
     get inputName() {
-        return $('input[id="name"]');
+        return $(
+            'div[class="containerRegister"]>form[class="registerForm"]>div[class="containerName"]>input[id="name"]'
+        );
     }
     get inputEmail() {
-        return $('input[id="email"]');
+        return $(
+            'div[class="containerRegister"]>form[class="registerForm"]>div[class="containerEmail"]>input[id="email"]'
+        );
     }
     get inputPassword() {
-        return $('input[id="password"]');
+        return $(
+            'div[class="containerRegister"]>form[class="registerForm"]>div[class="containerPassword"]>input[id="password"]'
+        );
     }
     get inputRepeatPassword() {
-        return $('input[id="rPassword"]');
-    }
-    get errorEmail() {
-        return $('div[id="errorEmail"]').getText();
-    }
-    get errorPassword() {
-        return $('div[id="errorPassword"]').getText();
-    }
-    get errorName() {
-        return $('div[id="errorName"]').getText();
-    }
-    get errorRepeatPassword() {
-        return $('div[id="errorPasswordR"]').getText();
+        return $(
+            'div[class="containerRegister"]>form[class="registerForm"]>div[class="containerPassword"]>input[id="rPassword"]'
+        );
     }
     get btnSubmit() {
-        return $('button[type="button"]');
+        return $(
+            'div[class="containerRegister"]>form[class="registerForm"]>button[type="button"]'
+        );
     }
     get btnLogin() {
-        return $('a[class="linkLogin"]');
+        return $(
+            'div[class="containerRegister"]>form[class="registerForm"]>div[class="containerLinkLogin"]>a[class="linkLogin"]'
+        );
+    }
+    get errorEmail() {
+        return $(
+            'div[class="containerRegister"]>form[class="registerForm"]>div[class="containerEmail"]>div[id="errorEmail"]'
+        ).getText();
+    }
+    get errorPassword() {
+        return $(
+            'div[class="containerRegister"]>form[class="registerForm"]>div[class="containerPassword"]>div[id="errorPassword"]'
+        ).getText();
+    }
+    get errorName() {
+        return $(
+            'div[class="containerRegister"]>form[class="registerForm"]>div[class="containerName"]>div[id="errorName"]'
+        ).getText();
+    }
+    get errorRepeatPassword() {
+        return $(
+            'div[class="containerRegister"]>form[class="registerForm"]>div[class="containerPassword"]>div[id="errorPasswordR"]'
+        ).getText();
     }
 
     buttonLogin() {
         this.btnLogin.click();
     }
 
-    testEmail(name, email, password, repeatPassword) {
+    testEmail(
+        name,
+        email,
+        password,
+        repeatPassword
+    ) {
         this.inputName.setValue(name);
         this.inputEmail.setValue(email);
-        this.inputPassword.setValue(password);
-        this.inputRepeatPassword.setValue(repeatPassword);
+        this.inputPassword.setValue(
+            password
+        );
+        this.inputRepeatPassword.setValue(
+            repeatPassword
+        );
         this.btnSubmit.click();
         return this.errorEmail;
     }
-    testName(name, email, password, repeatPassword) {
+    testName(
+        name,
+        email,
+        password,
+        repeatPassword
+    ) {
         this.inputName.setValue(name);
         this.inputEmail.setValue(email);
-        this.inputPassword.setValue(password);
-        this.inputRepeatPassword.setValue(repeatPassword);
+        this.inputPassword.setValue(
+            password
+        );
+        this.inputRepeatPassword.setValue(
+            repeatPassword
+        );
         this.btnSubmit.click();
         return this.errorName;
     }
-    testPassword(name, email, password, repeatPassword) {
+    testPassword(
+        name,
+        email,
+        password,
+        repeatPassword
+    ) {
         this.inputName.setValue(name);
         this.inputEmail.setValue(email);
-        this.inputPassword.setValue(password);
-        this.inputRepeatPassword.setValue(repeatPassword);
+        this.inputPassword.setValue(
+            password
+        );
+        this.inputRepeatPassword.setValue(
+            repeatPassword
+        );
         this.btnSubmit.click();
         return this.errorPassword;
     }
-    testRepeatPassword(name, email, password, repeatPassword) {
+    testRepeatPassword(
+        name,
+        email,
+        password,
+        repeatPassword
+    ) {
         this.inputName.setValue(name);
         this.inputEmail.setValue(email);
-        this.inputPassword.setValue(password);
-        this.inputRepeatPassword.setValue(repeatPassword);
+        this.inputPassword.setValue(
+            password
+        );
+        this.inputRepeatPassword.setValue(
+            repeatPassword
+        );
         this.btnSubmit.click();
         return this.errorRepeatPassword;
     }
