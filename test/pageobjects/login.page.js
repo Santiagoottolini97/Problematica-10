@@ -1,21 +1,21 @@
 class LoginPage {
     get inputEmail() {
-        return $('input[id="email"]');
+        return $('div[class="containerLogin"]>form[class="loginForm"]>div[class="containerEmail"]>input[id="email"]');
     }
     get inputPassword() {
-        return $('input[id="password"]');
+        return $('div[class="containerLogin"]>form[class="loginForm"]>div[class="containerPassword"]>input[id="password"]');
     }
     get errorEmail() {
-        return $('div[id="errorEmail"]').getText();
+        return $('div[class="containerLogin"]>form[class="loginForm"]>div[class="containerEmail"]>div[id="errorEmail"]').getText();
     }
     get errorPassword() {
-        return $('div[id="errorPassword"]').getText();
+        return $('div[class="containerLogin"]>form[class="loginForm"]>div[class="containerPassword"]>div[id="errorPassword"]').getText();
     }
     get btnSubmit() {
-        return $('button[type="button"]');
+        return $('div[class="containerLogin"]>form[class="loginForm"]>button[type="button"]');
     }
     get btnRegister() {
-        return $('a[class="linkRegister"]');
+        return $('div[class="containerLogin"]>form[class="loginForm"]>div[class="containerLinkRegister"]>a[class="linkRegister"]');
     }
 
     buttonRegister() {

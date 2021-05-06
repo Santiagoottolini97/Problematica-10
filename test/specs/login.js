@@ -2,7 +2,7 @@ const LoginPage = require('../pageobjects/login.page');
 
 describe('My Login application', () => {
     function browserPause() {
-        browser.pause(1000);
+        /* browser.pause(1000); */
     }
 
     //Variables ("Copy and paste your URL of the folder")
