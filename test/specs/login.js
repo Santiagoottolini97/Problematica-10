@@ -5,9 +5,9 @@ describe('My Login application', () => {
         browser.pause(1000);
     }
 
-    //Variables ("Copy and paste your URL of the folder")
-    const urlRegister = 'file:///C:/Users/Santiago/Desktop/Problematica-10-FrontEnd/public/register.html';
-    const urlLogin = 'file:///C:/Users/Santiago/Desktop/Problematica-10-FrontEnd/public/login.html';
+    //Variables
+    const urlRegister = 'http://localhost:4000/public/register.html';
+    const urlLogin = 'http://localhost:4000/public/login.html';
 
     describe('TEST LOGIN MAIL', () => {
         it('Valid credentials', () => {

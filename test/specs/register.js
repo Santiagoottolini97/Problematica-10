@@ -2,9 +2,9 @@ const RegisterPage = require('../pageobjects/register.page');
 
 describe('My Register application', () => {
 
-    //Variables ("Copy and paste your URL of the folder")
-    const urlRegister = 'file:///C:/Users/Santiago/Desktop/Problematica-10-FrontEnd/public/register.html';
-    const urlLogin = 'file:///C:/Users/Santiago/Desktop/Problematica-10-FrontEnd/public/login.html';
+    //Variables
+    const urlRegister = 'http://localhost:4000/public/register.html';
+    const urlLogin = 'http://localhost:4000/public/login.html';
 
     function browserPause() {
         browser.pause(1000); 

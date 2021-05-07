@@ -18,7 +18,8 @@
   "homepage": "https://github.com/Santiagoottolini97/Problematica-10-FrontEnd#readme",
   "dependencies": {
     "@wdio/cli": "^7.5.3",
-    "@wdio/sync": "^7.5.3"
+    "@wdio/sync": "^7.5.3",
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "@wdio/local-runner": "^7.5.5",
