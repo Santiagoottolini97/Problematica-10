@@ -5,13 +5,12 @@ Validacion de registro y login
 
 ## Pre-requisitos 📋
 
-#### Install WDIO:
+#### Install and test the page:
 
-* npm install
-
-#### Run rest WDIO:
-
-* npx wdio run ./wdio.conf.js
+* 1) npm install inside the folder "Problematica-10-FrontEnd"
+* 2) clone this repository https://github.com/Santiagoottolini97/Problematica-11-BackEnd
+* 3) npm install inside the folder "Problematica-11-BackEnd"
+* 4) npx wdio run ./wdio.conf.js inside the folder "Problematica-10-FrontEnd"
 
 #### Login form:
 
