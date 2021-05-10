@@ -51,18 +51,10 @@ class LoginPage {
     this.btnRegister.click();
   }
 
-  testPassword(email, password) {
+  testLogin(email, password) {
     this.inputEmail.setValue(email);
     this.inputPassword.setValue(password);
     this.btnSubmit.click();
-    return this.errorPassword;
-  }
-  
-  testEmail(email, password) {
-    this.inputEmail.setValue(email);
-    this.inputPassword.setValue(password);
-    this.btnSubmit.click();
-    return this.errorEmail;
   }
 }
 

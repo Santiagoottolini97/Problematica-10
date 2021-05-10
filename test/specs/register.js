@@ -12,17 +12,20 @@ describe('My Register application', () => {
     describe('TEST REGISTER NAME', () => {
         it('Valid credentials', () => {
             browser.url(urlRegister)
-            expect(RegisterPage.testName('Santiago Ottolini', 'santiago@gmail.com', 'Santi123', 'Santi123')).toBe('');
+            RegisterPage.testRegister('Santiago Ottolini', 'santiago@gmail.com', 'Santi123', 'Santi123')
+            expect(RegisterPage.errorName).toBe('');
             browserPause();
         });
         it('Empty name', () => {
-            expect(RegisterPage.testName('', 'santiago@gmail.com', 'Santi123', 'Santi123')).toBe(
+            RegisterPage.testRegister('', 'santiago@gmail.com', 'Santi123', 'Santi123')
+            expect(RegisterPage.errorName).toBe(
                 'Complete the name please'
             );
             browserPause();
         });
         it('Name without space', () => {
-            expect(RegisterPage.testName('Santi', 'sa@hot.', 'Santi123', 'Santi123')).toBe(
+            RegisterPage.testRegister('Santi', 'sa@hot.', 'Santi123', 'Santi123')
+            expect(RegisterPage.errorName).toBe(
                 'The name must cotaint space blank'
             );
             browserPause();
@@ -30,17 +33,20 @@ describe('My Register application', () => {
     });
     describe('TEST REGISTER EMAIL', () => {
         it('Valid credentials', () => {
-            expect(RegisterPage.testEmail('Santiago Ottolini', 'santiago@gmail.com', 'Santi123', 'Santi123')).toBe('');
+            RegisterPage.testRegister('Santiago Ottolini', 'santiago@gmail.com', 'Santi123', 'Santi123')
+            expect(RegisterPage.errorEmail).toBe('');
             browserPause();
         });
         it('Empty email', () => {
-            expect(RegisterPage.testEmail('Santiago Ottolini', '', 'Santi123', 'Santi123')).toBe(
+            RegisterPage.testRegister('Santiago Ottolini', '', 'Santi123', 'Santi123')
+            expect(RegisterPage.errorEmail).toBe(
                 'Complete with your email'
             );
             browserPause();
         });
         it('Email Invalid', () => {
-            expect(RegisterPage.testEmail('Santiago Ottolini', 'santi@gmail', 'Santi123', 'Santi123')).toBe(
+            RegisterPage.testRegister('Santiago Ottolini', 'santi@gmail', 'Santi123', 'Santi123')
+            expect(RegisterPage.errorEmail).toBe(
                 'The email is invalid'
             );
             browserPause();
@@ -48,35 +54,41 @@ describe('My Register application', () => {
     });
     describe('TEST REGISTER PASSWORD', () => {
         it('Valid password', () => {
-            expect(RegisterPage.testPassword('Santiago Ottolini', 'santi@gmail', 'Santi123', 'Santi123')).toBe('');
+            RegisterPage.testRegister('Santiago Ottolini', 'santi@gmail', 'Santi123', 'Santi123')
+            expect(RegisterPage.errorPassword).toBe('');
             browserPause();
         });
         it('Password must contain 8 digits', () => {
-            expect(RegisterPage.testRepeatPassword('Santiago Ottolini', 'santi@gmail', 'Sa123', 'Sa123')).toBe(
+            RegisterPage.testRegister('Santiago Ottolini', 'santi@gmail', 'Sa123', 'Sa123')
+            expect(RegisterPage.errorPassword).toBe(
                 'Your password must contain at least 8 digit.'
             );
             browserPause();
         });
         it('Password without uppercase', () => {
-            expect(RegisterPage.testPassword('Santiago Ottolini', 'santi@gmail', 'santi123', 'Santi123')).toBe(
+            RegisterPage.testRegister('Santiago Ottolini', 'santi@gmail', 'santi123', 'Santi123')
+            expect(RegisterPage.errorPassword).toBe(
                 'Your password must contain at least one uppercase letter.'
             );
             browserPause();
         });
         it('Empty password', () => {
-            expect(RegisterPage.testPassword('Santiago Ottolini', 'santi@gmail', '', 'Santi123')).toBe(
+            RegisterPage.testRegister('Santiago Ottolini', 'santi@gmail', '', 'Santi123')
+            expect(RegisterPage.errorPassword).toBe(
                 'Complete the password please'
             );
             browserPause();
         });
         it('Password without numbers', () => {
-            expect(RegisterPage.testPassword('Santiago Ottolini', 'santi@gmail', 'Santi', 'Santi123')).toBe(
+            RegisterPage.testRegister('Santiago Ottolini', 'santi@gmail', 'Santi', 'Santi123')
+            expect(RegisterPage.errorPassword).toBe(
                 'Your password must contain at least one number.'
             );
             browserPause();
         });
         it('Password without lowercase', () => {
-            expect(RegisterPage.testPassword('Santiago Ottolini', 'santi@gmail', 'SANTI123', 'Santi123')).toBe(
+            RegisterPage.testRegister('Santiago Ottolini', 'santi@gmail', 'SANTI123', 'Santi123')
+            expect(RegisterPage.errorPassword).toBe(
                 'Your password must contain at least one lowercase letter.'
             );
             browserPause();
@@ -84,43 +96,50 @@ describe('My Register application', () => {
     });
     describe('TEST REPEAT PASSWORD', () => {
         it('Valid password', () => {
-            expect(RegisterPage.testRepeatPassword('Santiago Ottolini', 'santi@gmail', 'Santi123', 'Santi123')).toBe(
+            RegisterPage.testRegister('Santiago Ottolini', 'santi@gmail', 'Santi123', 'Santi123')
+            expect(RegisterPage.errorRepeatPassword).toBe(
                 ''
             );
             browserPause();
         });
         it('Different password', () => {
-            expect(RegisterPage.testRepeatPassword('Santiago Ottolini', 'santi@gmail', 'Santi123', 'Santi12345')).toBe(
+            RegisterPage.testRegister('Santiago Ottolini', 'santi@gmail', 'Santi123', 'Santi12345')
+            expect(RegisterPage.errorRepeatPassword).toBe(
                 'Must be the same password'
             );
             browserPause();
         });
         it('Password must contain 8 digits', () => {
-            expect(RegisterPage.testRepeatPassword('Santiago Ottolini', 'santi@gmail', 'Sa123', 'Sa123')).toBe(
+            RegisterPage.testRegister('Santiago Ottolini', 'santi@gmail', 'Sa123', 'Sa123')
+            expect(RegisterPage.errorRepeatPassword).toBe(
                 'Your password must contain at least 8 digit.'
             );
             browserPause();
         });
         it('Password without uppercase', () => {
-            expect(RegisterPage.testRepeatPassword('Santiago Ottolini', 'santi@gmail', 'santi123', 'santi123')).toBe(
+            RegisterPage.testRegister('Santiago Ottolini', 'santi@gmail', 'santi123', 'santi123')
+            expect(RegisterPage.errorRepeatPassword).toBe(
                 'Your password must contain at least one uppercase letter.'
             );
             browserPause();
         });
         it('Empty password', () => {
-            expect(RegisterPage.testRepeatPassword('Santiago Ottolini', 'santi@gmail', '', '')).toBe(
+            RegisterPage.testRegister('Santiago Ottolini', 'santi@gmail', '', '')
+            expect(RegisterPage.errorRepeatPassword).toBe(
                 'Complete the password please'
             );
             browserPause();
         });
         it('Password without numbers', () => {
-            expect(RegisterPage.testRepeatPassword('Santiago Ottolini', 'santi@gmail', 'Santi', 'Santi')).toBe(
+            RegisterPage.testRegister('Santiago Ottolini', 'santi@gmail', 'Santi', 'Santi')
+            expect(RegisterPage.errorRepeatPassword).toBe(
                 'Your password must contain at least one number.'
             );
             browserPause();
         });
         it('Password without lowercase', () => {
-            expect(RegisterPage.testRepeatPassword('Santiago Ottolini', 'santi@gmail', 'SANTI123', 'SANTI123')).toBe(
+            RegisterPage.testRegister('Santiago Ottolini', 'santi@gmail', 'SANTI123', 'SANTI123')
+            expect(RegisterPage.errorRepeatPassword).toBe(
                 'Your password must contain at least one lowercase letter.'
             );
             browserPause();

@@ -83,41 +83,14 @@ class RegisterPage {
     this.btnLogin.click();
   }
 
-  testEmail(name, email, password, repeatPassword) {
+  testRegister(name, email, password, repeatPassword) {
     this.inputName.setValue(name);
     this.inputEmail.setValue(email);
     this.inputPassword.setValue(password);
     this.inputRepeatPassword.setValue(repeatPassword);
     this.btnSubmit.click();
-    return this.errorEmail;
   }
 
-  testName(name, email, password, repeatPassword) {
-    this.inputName.setValue(name);
-    this.inputEmail.setValue(email);
-    this.inputPassword.setValue(password);
-    this.inputRepeatPassword.setValue(repeatPassword);
-    this.btnSubmit.click();
-    return this.errorName;
-  }
-
-  testPassword(name, email, password, repeatPassword) {
-    this.inputName.setValue(name);
-    this.inputEmail.setValue(email);
-    this.inputPassword.setValue(password);
-    this.inputRepeatPassword.setValue(repeatPassword);
-    this.btnSubmit.click();
-    return this.errorPassword;
-  }
-
-  testRepeatPassword(name, email, password, repeatPassword) {
-    this.inputName.setValue(name);
-    this.inputEmail.setValue(email);
-    this.inputPassword.setValue(password);
-    this.inputRepeatPassword.setValue(repeatPassword);
-    this.btnSubmit.click();
-    return this.errorRepeatPassword;
-  }
 }
 
 module.exports = new RegisterPage();

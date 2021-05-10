@@ -12,43 +12,51 @@ describe('My Login application', () => {
     describe('TEST LOGIN MAIL', () => {
         it('Valid credentials', () => {
             browser.url(urlLogin);
-            expect(LoginPage.testEmail('santiago@gmail.com', 'Santi123')).toBe('');
+            LoginPage.testLogin('santiago@gmail.com', 'Santi123')
+            expect(LoginPage.errorEmail).toBe('');
             browserPause();
         });
         it('Empty email', () => {
-            expect(LoginPage.testEmail('', 'Santi123')).toBe('Complete with your email');
+            LoginPage.testLogin('', 'Santi123')
+            expect(LoginPage.errorEmail).toBe('Complete with your email');
             browserPause();
         });
         it('Email Invalid', () => {
-            expect(LoginPage.testEmail('santi@gmail', 'Santi123')).toBe('The email is invalid');
+            LoginPage.testLogin('santi@gmail', 'Santi123')
+            expect(LoginPage.errorEmail).toBe('The email is invalid');
             browserPause();
         });
     });
     describe('TEST LOGIN PASSWORD', () => {
         it('Valid password', () => {
-            expect(LoginPage.testPassword('santiago@gmail.com', 'Santi123')).toBe('');
+            LoginPage.testLogin('santiago@gmail.com', 'Santi123')
+            expect(LoginPage.errorPassword).toBe('');
             browserPause();
         });
         it('Password must contain 8 digits', () => {
-            expect(LoginPage.testPassword('santiago@gmail.com', 'Sa123')).toBe(
+            LoginPage.testLogin('santiago@gmail.com', 'Sa123')
+            expect(LoginPage.errorPassword).toBe(
                 'Your password must contain at least 8 digit.'
             );
             browserPause();
         });
         it('Password without uppercase', () => {
-            expect(LoginPage.testPassword('santiago@gmail.com', 'santiago')).toBe(
+            LoginPage.testLogin('santiago@gmail.com', 'santiago')
+            expect(LoginPage.errorPassword).toBe(
                 'Your password must contain at least one uppercase letter.'
             );
             browserPause();
         });
         it('Password without numbers', () => {
-            expect(LoginPage.testPassword('santiago@.com', 'Santi')).toBe(
+            LoginPage.testLogin('santiago@.com', 'Santi')
+            expect(LoginPage.errorPassword).toBe(
                 'Your password must contain at least one number.'
             );
             browserPause();
         });
         it('Password without lowercase', () => {
-            expect(LoginPage.testPassword('santiago@.com', 'SANTI123')).toBe(
+            LoginPage.testLogin('santiago@.com', 'SANTI123')
+            expect(LoginPage.errorPassword).toBe(
                 'Your password must contain at least one lowercase letter.'
             );
             browserPause();
